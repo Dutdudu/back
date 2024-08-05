@@ -4,7 +4,7 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 class UsuarioController {
-  // Cria um novo usuário
+  
   public async create(request: Request, response: Response): Promise<Response> {
     const { nome, endereco, idade, email, telefone } = request.body;
 
@@ -31,7 +31,7 @@ class UsuarioController {
     }
   }
 
-  // Lê todos os usuários
+  
   public async readAll(request: Request, response: Response): Promise<Response> {
     try {
       const usuarios = await prisma.usuario.findMany();
@@ -44,7 +44,7 @@ class UsuarioController {
     }
   }
 
-  // Lê um usuário pelo ID
+
   public async readById(request: Request, response: Response): Promise<Response> {
     const { id } = request.params;
 
@@ -66,7 +66,7 @@ class UsuarioController {
     }
   }
 
-  // Atualiza um usuário pelo ID
+  
   public async update(request: Request, response: Response): Promise<Response> {
     const { id } = request.params;
     const { nome, endereco, idade, email, telefone } = request.body;
@@ -95,7 +95,7 @@ class UsuarioController {
     }
   }
 
-  // Deleta um usuário pelo ID
+
   public async delete(request: Request, response: Response): Promise<Response> {
     const { id } = request.params;
 

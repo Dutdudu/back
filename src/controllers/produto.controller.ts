@@ -4,7 +4,7 @@ import { Request, Response } from 'express';
 const prisma = new PrismaClient();
 
 class ProdutoController {
-  // Cria um novo produto
+  
   public async create(request: Request, response: Response): Promise<Response> {
     const { preco, taxa, nome, validade, origem, fk_Usuario_codigo } = request.body;
 
@@ -32,7 +32,7 @@ class ProdutoController {
     }
   }
 
-  // Lê todos os produtos
+ 
   public async readAll(request: Request, response: Response): Promise<Response> {
     try {
       const produtos = await prisma.produto.findMany();
@@ -45,7 +45,7 @@ class ProdutoController {
     }
   }
 
-  // Lê um produto pelo ID
+
   public async readById(request: Request, response: Response): Promise<Response> {
     const { id } = request.params;
 
@@ -67,7 +67,7 @@ class ProdutoController {
     }
   }
 
-  // Atualiza um produto pelo ID
+
   public async update(request: Request, response: Response): Promise<Response> {
     const { id } = request.params;
     const { preco, taxa, nome, validade, origem, fk_Usuario_codigo } = request.body;
@@ -97,7 +97,6 @@ class ProdutoController {
     }
   }
 
-  // Deleta um produto pelo ID
   public async delete(request: Request, response: Response): Promise<Response> {
     const { id } = request.params;
 
