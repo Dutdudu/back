@@ -1,0 +1,31 @@
+// schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql" // Altere conforme o banco de dados utilizado
+  url      = env("DATABASE_URL")
+}
+
+model Usuario {
+  codigo   Int      @id @default(autoincrement())
+  nome     String
+  endereco String
+  idade    Int
+  email    String
+  telefone Int
+  produtos Produto[]
+}
+
+model Produto {
+  codigo             Int      @id @default(autoincrement())
+  preco              Float
+  taxa               Float
+  nome               String
+  validade           Int
+  origem             String
+  fk_Usuario_codigo  Int
+  usuario            Usuario  @relation(fields: [fk_Usuario_codigo], references: [codigo], onDelete: Cascade)
+}
